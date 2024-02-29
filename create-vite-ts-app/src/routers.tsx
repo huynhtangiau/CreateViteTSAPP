@@ -1,15 +1,20 @@
 import { createBrowserRouter } from 'react-router-dom';
-import FormInputPage from './pages/formInput';
+import UserInputPage from './pages/user/_userInput';
 import HomePage from './pages/home';
+import FormikLoginPage from './pages/login/_loginInput';
 
 const routers = createBrowserRouter([
     {
-        path: '/form',
-        element: <FormInputPage />,
+        path: '/user',
+        element: <UserInputPage />,
     },
     {
         path: '/',
         element: <HomePage />,
+    },
+    {
+        path: '/login',
+        element: <FormikLoginPage />,
     },
 ]);
 export default routers;

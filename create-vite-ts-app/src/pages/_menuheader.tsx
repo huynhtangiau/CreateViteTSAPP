@@ -6,8 +6,11 @@ export default function MenuHeaderComponent() {
                 <Link color="teal.500" href="/">
                     Home
                 </Link>
-                <Link color="teal.500" href="/form">
-                    Form
+                <Link color="teal.500" href="/user">
+                    User
+                </Link>
+                <Link color="teal.500" href="/login">
+                    Login
                 </Link>
             </Stack>
         </>
