@@ -17,7 +17,6 @@ import { Field, Formik } from 'formik';
 import { UserInfoModel } from '../../models/UserInfoModel';
 import { onRegister } from './user';
 export default function UserInputPage() {
-    function resetForm() {}
     return (
         <>
             <Stack direction={'column'}>
@@ -127,7 +126,8 @@ export default function UserInputPage() {
                                 <Button
                                     colorScheme="teal"
                                     variant="outline"
-                                    onClick={resetForm}
+                                    type="reset"
+                                    onClick={() => props.resetForm()}
                                 >
                                     Reset
                                 </Button>
