@@ -28,11 +28,14 @@ export default function UserInputPage() {
                     initialValues={new UserInfoModel()}
                     onSubmit={onRegister}
                 >
-                    {({ handleSubmit, errors, touched }) => (
-                        <form onSubmit={handleSubmit}>
+                    {(props) => (
+                        <form onSubmit={props.handleSubmit}>
                             <Flex gap={2} wrap={'wrap'}>
                                 <FormControl
-                                    isInvalid={!!errors.Name && touched.Name}
+                                    isInvalid={
+                                        !!props.errors.Name &&
+                                        props.touched.Name
+                                    }
                                 >
                                     <FormLabel>Name *</FormLabel>
                                     <Field
@@ -43,23 +46,24 @@ export default function UserInputPage() {
                                         variant="flushed"
                                     />
                                     <FormErrorMessage>
-                                        {errors.Name}
+                                        {props.errors.Name}
                                     </FormErrorMessage>
                                 </FormControl>
                                 <FormControl>
                                     <FormLabel>Gender</FormLabel>
-                                    <Field
-                                        as="select"
+                                    <Select
                                         name="Gender"
                                         placeholder="Select option"
                                         width="100%"
+                                        onChange={props.handleChange}
+                                        value={props.values.Gender}
                                     >
                                         <option value="">
                                             Select an option
                                         </option>
                                         <option value="M">Male</option>
                                         <option value="F">Female</option>
-                                    </Field>
+                                    </Select>
                                 </FormControl>
                                 <FormControl>
                                     <FormLabel>Birthday</FormLabel>
@@ -80,7 +84,10 @@ export default function UserInputPage() {
                                     />
                                 </FormControl>
                                 <FormControl
-                                    isInvalid={!!errors.Phone && touched.Phone}
+                                    isInvalid={
+                                        !!props.errors.Phone &&
+                                        props.touched.Phone
+                                    }
                                 >
                                     <FormLabel>Phone</FormLabel>
                                     <InputGroup>
@@ -92,11 +99,14 @@ export default function UserInputPage() {
                                         />
                                     </InputGroup>
                                     <FormErrorMessage>
-                                        {errors.Phone}
+                                        {props.errors.Phone}
                                     </FormErrorMessage>
                                 </FormControl>
                                 <FormControl
-                                    isInvalid={!!errors.Email && touched.Email}
+                                    isInvalid={
+                                        !!props.errors.Email &&
+                                        props.touched.Email
+                                    }
                                 >
                                     <FormLabel>Email address</FormLabel>
                                     <Field
@@ -106,7 +116,7 @@ export default function UserInputPage() {
                                         id="Email"
                                     />
                                     <FormErrorMessage>
-                                        {errors.Email}
+                                        {props.errors.Email}
                                     </FormErrorMessage>
                                 </FormControl>
                             </Flex>
