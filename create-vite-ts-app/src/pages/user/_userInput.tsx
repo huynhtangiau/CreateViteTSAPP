@@ -15,7 +15,7 @@ import {
 } from '@chakra-ui/react';
 import { Field, Formik } from 'formik';
 import { UserInfoModel } from '../../models/UserInfoModel';
-import { onRegister } from './user';
+import { UserSchema, onRegister } from './user';
 export default function UserInputPage() {
     return (
         <>
@@ -26,6 +26,7 @@ export default function UserInputPage() {
                 <Formik
                     initialValues={new UserInfoModel()}
                     onSubmit={onRegister}
+                    validationSchema={UserSchema}
                 >
                     {(props) => (
                         <form onSubmit={props.handleSubmit}>
@@ -48,7 +49,12 @@ export default function UserInputPage() {
                                         {props.errors.Name}
                                     </FormErrorMessage>
                                 </FormControl>
-                                <FormControl>
+                                <FormControl
+                                    isInvalid={
+                                        !!props.errors.Gender &&
+                                        props.touched.Gender
+                                    }
+                                >
                                     <FormLabel>Gender</FormLabel>
                                     <Select
                                         name="Gender"
@@ -57,14 +63,16 @@ export default function UserInputPage() {
                                         onChange={props.handleChange}
                                         value={props.values.Gender}
                                     >
-                                        <option value="">
-                                            Select an option
-                                        </option>
                                         <option value="M">Male</option>
                                         <option value="F">Female</option>
                                     </Select>
                                 </FormControl>
-                                <FormControl>
+                                <FormControl
+                                    isInvalid={
+                                        !!props.errors.Birthday &&
+                                        props.touched.Birthday
+                                    }
+                                >
                                     <FormLabel>Birthday</FormLabel>
                                     <Field
                                         as={Input}
@@ -74,7 +82,12 @@ export default function UserInputPage() {
                                         type="datetime-local"
                                     />
                                 </FormControl>
-                                <FormControl>
+                                <FormControl
+                                    isInvalid={
+                                        !!props.errors.Address &&
+                                        props.touched.Address
+                                    }
+                                >
                                     <FormLabel>Address</FormLabel>
                                     <Field
                                         as={Input}
