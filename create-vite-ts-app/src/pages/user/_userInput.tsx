@@ -37,7 +37,7 @@ export default function UserInputPage() {
                                         props.touched.Name
                                     }
                                 >
-                                    <FormLabel>Name *</FormLabel>
+                                    <FormLabel>Name*</FormLabel>
                                     <Field
                                         as={Input}
                                         name="Name"
@@ -73,7 +73,7 @@ export default function UserInputPage() {
                                         props.touched.Birthday
                                     }
                                 >
-                                    <FormLabel>Birthday</FormLabel>
+                                    <FormLabel>Birthday*</FormLabel>
                                     <Field
                                         as={Input}
                                         name="Birthday"
@@ -88,7 +88,7 @@ export default function UserInputPage() {
                                         props.touched.Address
                                     }
                                 >
-                                    <FormLabel>Address</FormLabel>
+                                    <FormLabel>Address*</FormLabel>
                                     <Field
                                         as={Input}
                                         name="Address"
@@ -101,7 +101,7 @@ export default function UserInputPage() {
                                         props.touched.Phone
                                     }
                                 >
-                                    <FormLabel>Phone</FormLabel>
+                                    <FormLabel>Phone*</FormLabel>
                                     <InputGroup>
                                         <InputLeftAddon>+84</InputLeftAddon>
                                         <Field
@@ -120,7 +120,7 @@ export default function UserInputPage() {
                                         props.touched.Email
                                     }
                                 >
-                                    <FormLabel>Email address</FormLabel>
+                                    <FormLabel>Email address*</FormLabel>
                                     <Field
                                         as={Input}
                                         name="Email"
