@@ -8,7 +8,7 @@ import {
     getCoreRowModel,
     useReactTable,
 } from '@tanstack/react-table';
-import { Person, makeData } from '../../data/makeData';
+import { makeData } from '../../data/makeData';
 import {
     Button,
     Stack,
@@ -20,6 +20,7 @@ import {
     Thead,
     Tr,
 } from '@chakra-ui/react';
+import { Person } from '../../models/Person';
 
 const defaultColumns: ColumnDef<Person>[] = [
     {

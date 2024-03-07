@@ -3,6 +3,7 @@ import SelectComponent from '../components/Select.tsx';
 import TablistComponent from '../components/tablist.tsx';
 import { useState } from 'react';
 import AlertComponent from '../components/Alert.tsx';
+import TablePaginationComponent from '../components/TablePagination.tsx';
 
 export default function HomePage() {
     const [count, setCount] = useState(0);
@@ -27,6 +28,7 @@ export default function HomePage() {
                 </SimpleGrid>
                 <AlertComponent></AlertComponent>
                 <TablistComponent></TablistComponent>
+                <TablePaginationComponent></TablePaginationComponent>
             </Stack>
         </>
     );
