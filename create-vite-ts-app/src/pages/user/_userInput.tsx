@@ -12,11 +12,14 @@ import {
     InputLeftAddon,
     Select,
     Stack,
+    Text,
 } from '@chakra-ui/react';
 import { Field, Formik } from 'formik';
 import { UserInfoModel } from '../../models/UserInfoModel';
 import { UserSchema } from './validation';
+import { useParams } from 'react-router-dom';
 export default function UserInputPage() {
+    const params = useParams();
     function onRegister(values: UserInfoModel) {
         console.log(values);
     }
@@ -25,6 +28,7 @@ export default function UserInputPage() {
             <Stack direction={'column'}>
                 <Box p="2">
                     <Heading size="md">Resigter</Heading>
+                    <Text>{params.id}</Text>
                 </Box>
                 <Formik
                     initialValues={new UserInfoModel()}

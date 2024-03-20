@@ -10,6 +10,10 @@ const routers = createBrowserRouter([
         element: <UserInputPage />,
     },
     {
+        path: '/user/:id',
+        element: <UserInputPage />,
+    },
+    {
         path: '/',
         element: <HomePage />,
     },
