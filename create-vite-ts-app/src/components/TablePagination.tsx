@@ -7,6 +7,7 @@ import {
     getCoreRowModel,
     ColumnDef,
     flexRender,
+    SortingState,
 } from '@tanstack/react-table';
 import fetchData from '../data/fetchData';
 import { Person } from '../models/Person';
@@ -88,7 +89,7 @@ export default function TablePaginationComponent() {
         pageIndex: 0,
         pageSize: 10,
     });
-
+    const [sorting, setSorting] = React.useState<SortingState>([]);
     const dataQuery = useQuery({
         queryKey: ['data', pagination],
         queryFn: () => fetchData(pagination),
@@ -104,12 +105,14 @@ export default function TablePaginationComponent() {
         rowCount: dataQuery.data?.rowCount, // new in v8.13.0 - alternatively, just pass in `pageCount` directly
         state: {
             pagination,
+            sorting,
         },
         onPaginationChange: setPagination,
         getCoreRowModel: getCoreRowModel(),
         manualPagination: true, //we're doing manual "server-side" pagination
         // getPaginationRowModel: getPaginationRowModel(), // If only doing manual pagination, you don't need this
         debugTable: true,
+        onSortingChange: setSorting,
     });
 
     return (
@@ -125,12 +128,36 @@ export default function TablePaginationComponent() {
                                         colSpan={header.colSpan}
                                     >
                                         {header.isPlaceholder ? null : (
-                                            <div>
+                                            <div
+                                                className={
+                                                    header.column.getCanSort()
+                                                        ? 'cursor-pointer select-none'
+                                                        : ''
+                                                }
+                                                onClick={header.column.getToggleSortingHandler()}
+                                                title={
+                                                    header.column.getCanSort()
+                                                        ? header.column.getNextSortingOrder() ===
+                                                          'asc'
+                                                            ? 'Sort ascending'
+                                                            : header.column.getNextSortingOrder() ===
+                                                              'desc'
+                                                            ? 'Sort descending'
+                                                            : 'Clear sort'
+                                                        : undefined
+                                                }
+                                            >
                                                 {flexRender(
                                                     header.column.columnDef
                                                         .header,
                                                     header.getContext()
                                                 )}
+                                                {{
+                                                    asc: ' 🔼',
+                                                    desc: ' 🔽',
+                                                }[
+                                                    header.column.getIsSorted() as string
+                                                ] ?? null}
                                             </div>
                                         )}
                                     </Th>

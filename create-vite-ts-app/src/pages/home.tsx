@@ -1,9 +1,13 @@
-import { Box, Button, SimpleGrid, Stack, Text } from '@chakra-ui/react';
-import SelectComponent from '../components/Select.tsx';
+import {
+    AbsoluteCenter,
+    Box,
+    Button,
+    Divider,
+    Stack,
+    Text,
+} from '@chakra-ui/react';
 import TablistComponent from '../components/tablist.tsx';
 import { useState } from 'react';
-import AlertComponent from '../components/Alert.tsx';
-import TablePaginationComponent from '../components/TablePagination.tsx';
 
 export default function HomePage() {
     const [count, setCount] = useState(0);
@@ -18,17 +22,15 @@ export default function HomePage() {
                 <Button borderLeftRadius="0" onClick={btnOnClick}>
                     Click to Count
                 </Button>
-                <SelectComponent width={200}></SelectComponent>
-                <SimpleGrid columns={2} spacing={10}>
-                    <Box bg="tomato" height="80px"></Box>
-                    <Box bg="tomato" height="80px"></Box>
-                    <Box bg="tomato" height="80px"></Box>
-                    <Box bg="tomato" height="80px"></Box>
-                    <Box bg="tomato" height="80px"></Box>
-                </SimpleGrid>
-                <AlertComponent></AlertComponent>
+                <Box position="relative" padding="10">
+                    <Divider />
+                    <AbsoluteCenter bg="white" px="4">
+                        <Text fontSize="2xl" as="b">
+                            Components{' '}
+                        </Text>
+                    </AbsoluteCenter>
+                </Box>
                 <TablistComponent></TablistComponent>
-                <TablePaginationComponent></TablePaginationComponent>
             </Stack>
         </>
     );
