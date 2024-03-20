@@ -1,10 +1,6 @@
 import UserInfoModel from '../../models/UserInfoModel';
 import * as Yup from 'yup';
 
-export function onRegister(values: UserInfoModel) {
-    console.log(values);
-}
-
 export const UserSchema = Yup.object<UserInfoModel>().shape({
     Name: Yup.string()
         .min(2, 'Too Short!')

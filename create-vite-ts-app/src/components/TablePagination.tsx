@@ -28,8 +28,6 @@ import {
     Wrap,
 } from '@chakra-ui/react';
 export default function TablePaginationComponent() {
-    const rerender = React.useReducer(() => ({}), {})[1];
-
     const columns = React.useMemo<ColumnDef<Person>[]>(
         () => [
             {

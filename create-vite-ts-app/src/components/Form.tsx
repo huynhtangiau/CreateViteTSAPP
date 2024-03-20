@@ -15,9 +15,12 @@ import {
 } from '@chakra-ui/react';
 import { Formik, Field } from 'formik';
 import { UserInfoModel } from '../models/UserInfoModel';
-import { onRegister, UserSchema } from '../pages/user/user';
+import { UserSchema } from '../pages/user/validation';
 
 export default function FormComponent() {
+    function onRegister(values: UserInfoModel) {
+        console.log(values);
+    }
     return (
         <>
             <Stack direction={'column'}>
